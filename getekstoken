@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+import argparse
+
+from tokeks import Tokeks
+
+from credentials import AWS_ACCESS_KEY_ID
+from credentials import AWS_SECRET_ACCESS_KEY
+
+cli = argparse.ArgumentParser()
+cli.add_argument('region_id', metavar='region',
+                 help="AWS region id (e.g. us-east-3)")
+cli.add_argument('cluster_id', metavar='cluster',
+                 help="AWS cluster id (e.g. cluster-1)")
+cli.add_argument("-e", "--token-expiry", metavar='expiration', type=int,
+                 help="set token expiration (seconds)")
+
+
+def main():
+    cli_args = vars(cli.parse_args())
+    tokeks = Tokeks(
+        access_key_id=AWS_ACCESS_KEY_ID,
+        secret_access_key=AWS_SECRET_ACCESS_KEY,
+        **cli_args)
+    token = tokeks.get_token()
+    print(token)
+
+
+if __name__ == '__main__':
+    main()
