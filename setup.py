@@ -6,7 +6,7 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
     name='tokeks',
-    version='0.1',
+    version='0.1.1',
     description='',
     url='https://github.com/ckarageorgkaneen/tokeks',
     packages=['tokeks'],
