@@ -4,25 +4,36 @@
 
 ![](resources/aws_eks_icon.png)
 
-A standard Python library for getting the Kubernetes token of a AWS EKS cluster.
+A zero-dependency Python library for getting the Kubernetes token of a AWS EKS cluster.
 
 **No** AWS CLI, third-party client or library (boto3, botocore, etc.) required.
 
-## Library Usage
+## Installation
+```bash
+pip install tokeks
+```
+
+## Usage prerequisites
+Assign your credentials to environment variables:
+```bash
+export AWS_ACCESS_KEY_ID="..."
+export AWS_SECRET_ACCESS_KEY="..."
+```
+
+## Library usage
 
 ```python
 from tokeks import Tokeks
 tokeks = Tokeks(
-    access_key_id='YOUR_AWS_ACCESS_KEY_ID',
-    secret_access_key='YOUR_AWS_SECRET_ACCESS_KEY',
+    access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
+    secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
     region_id='YOUR_REGION_ID',
     cluster_id='YOUR_CLUSTER_ID')
 token = tokeks.get_token()
 ```
 
-## CLI Usage
-
-1. Add your credentials to `credentials.py`
+## CLI usage
+1. Go to project directory 
 
 2. Run script:
 ```bash
