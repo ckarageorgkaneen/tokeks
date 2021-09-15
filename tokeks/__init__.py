@@ -1,4 +1,4 @@
-"""A standard Python library for getting the Kubernetes token
+"""A zero-dependency Python library for getting the Kubernetes token
 of a AWS EKS cluster
 
 No AWS CLI, third-party client or library (boto3, botocore, etc.) required.
