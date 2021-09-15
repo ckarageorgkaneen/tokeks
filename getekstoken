@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
+import os
 import argparse
 
 from tokeks import Tokeks
-
-from credentials import AWS_ACCESS_KEY_ID
-from credentials import AWS_SECRET_ACCESS_KEY
 
 cli = argparse.ArgumentParser()
 cli.add_argument('region_id', metavar='region',
@@ -18,8 +16,8 @@ cli.add_argument("-e", "--token-expiry", metavar='expiration', type=int,
 def main():
     cli_args = vars(cli.parse_args())
     tokeks = Tokeks(
-        access_key_id=AWS_ACCESS_KEY_ID,
-        secret_access_key=AWS_SECRET_ACCESS_KEY,
+        access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
+        secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
         **cli_args)
     token = tokeks.get_token()
     print(token)
